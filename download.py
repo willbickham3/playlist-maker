@@ -63,13 +63,3 @@ shutil.move('The-Barrens.mp3', 'songs')
 #audio_files.stream.download('downloaded')
 
 #file_to_download.download("downloaded")
-
-
-# song_2 = VideoFileClip("downloaded/WoW Synthwave Beats to Chill To  Journey to BlizzCon.mp4").subclip()
-# song_3 = VideoFileClip("downloaded/WoW Synthwave Beats to Chill To  Journey to BlizzCon.mp4").subclip()
-# song_4 = VideoFileClip("downloaded/WoW Synthwave Beats to Chill To  Journey to BlizzCon.mp4").subclip()
-
-
-
-# for x in audio_files:
-#     x.download('downloaded')
