@@ -2,36 +2,13 @@ from pytube import YouTube
 from moviepy.editor import *
 import shutil
 
-yt = YouTube('https://www.youtube.com/watch?v=vJpo5dW3Ze4')
+def create_song(input_path, name, start, end, output_path):
+    song = VideoFileClip(f"{input_path}").subclip(start, end)
+    song = song.audio
+    output_file = f"{name}.mp3"
+    song.write_audiofile(output_file)
+    shutil.move(output_file, "songs")
 
-print(yt.title)
-
-#audio_files = yt.streams.filter(only_audio = True)
-audio_files = yt.streams.filter(file_extension='mp4')
-audio_files = audio_files
-#print(audio_files)
-abr_list = []
-for x in audio_files:
-    if x.abr == None:
-        continue
-    bitRate = x.abr
-
-    bitRate = bitRate.split("kbps")
-    bitRate = int(bitRate[0])
-    abr_list.append(bitRate)
-abr_list.sort(reverse=True)
-
-# for x in audio_files:
-#     highest_kbps = f"{abr_list[0]}kbps"
-#     # print(f"{highest_kbps}kbps")
-#     if x.abr == highest_kbps:
-#         x.download("downloaded")
-
-#file_to_download = audio_files.get_by_itag(140)
-# class Song:
-#     def __init__(self, start, end):
-#         self.start = start
-#         self.end = end
 
 song_1 = VideoFileClip("downloaded/WoW Synthwave Beats to Chill To  Journey to BlizzCon.mp4").subclip(0, 274)
 song_1 = song_1.audio
