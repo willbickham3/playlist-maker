@@ -1,27 +1,21 @@
 from pytube import YouTube
-from moviepy.editor import *
 import shutil
 
-yt = YouTube('https://www.youtube.com/watch?v=vJpo5dW3Ze4')
-
-print(yt.title)
 def download_video(url):
+    """Takes in a url in string form and downloads the highest quality sound from the video"""
     yt = YouTube(url)
-    audio_files = yt.streams.filter(file_extension='mp4')
-    audio_files = audio_files
-    abr_list = []
+    audio_files = yt.streams.filter(file_extension="mp4")
+    bitrate_list = []
     for x in audio_files:
         if x.abr == None:
             continue
-        bitRate = x.abr
+        bitrate = x.abr.split('kbps')
+        bitrate_list.append(int(bitrate[0]))
+    bitrate_list.sort(reverse=True)
+    highest_bitrate = f"{bitrate_list[0]}kbps"
 
-        bitRate = bitRate.split("kbps")
-        bitRate = int(bitRate[0])
-        abr_list.append(bitRate)
-    abr_list.sort(reverse=True)
 
-    for x in audio_files:
-        highest_kbps = f"{abr_list[0]}kbps"
-        # print(f"{highest_kbps}kbps")
-        if x.abr == highest_kbps:
-            x.download("downloaded")
+    for y in audio_files:
+        if y.abr == highest_bitrate:
+            file_to_download = audio_files.get_by_itag(y.itag)
+            shutil.move(file_to_download.download(), "downloaded")
