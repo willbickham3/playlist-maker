@@ -18,7 +18,7 @@ def download_video(url):
     path = f"downloaded/{yt.title}.mp4"
     
     if os.path.isfile(path):
-        return
+        return yt.title
 
     try:
         if yt.streams:
@@ -35,10 +35,10 @@ def download_video(url):
                 if y.abr == highest_bitrate:
                     file_to_download = audio_files.get_by_itag(y.itag)
                     shutil.move(file_to_download.download(), "downloaded")
+                    return yt.title
         else:
             raise Exception("No streamable content found in the provided URL.")
     except VideoPrivate:
         print("Video is private and cannot be downloaded.")
     except VideoUnavailable:
         print("Video is unavailable or restricted.")
-        
