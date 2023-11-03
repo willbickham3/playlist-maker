@@ -41,5 +41,4 @@ def download_video(url):
         print("Video is private and cannot be downloaded.")
     except VideoUnavailable:
         print("Video is unavailable or restricted.")
-
-download_video("Bep")
+        
