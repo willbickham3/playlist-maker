@@ -1,6 +1,8 @@
 from pytube import YouTube
 import shutil
 from pytube.exceptions import VideoUnavailable, VideoPrivate, RegexMatchError
+import os
+
 
 def download_video(url):
     """Takes in a url in string form and downloads the highest quality sound from the video"""
@@ -13,9 +15,11 @@ def download_video(url):
     
 
     yt = YouTube(url)
+    path = f"downloaded/{yt.title}.mp4"
+    
+    if os.path.isfile(path):
+        return
 
-    if yt.title in "downloaded":
-        print("You already got it!")
     try:
         if yt.streams:
             audio_files = yt.streams.filter(file_extension="mp4")
