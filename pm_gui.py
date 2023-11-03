@@ -24,17 +24,9 @@ while True:
     if event == "Submit":
         user_input = values["user_input"]   #Retrieves user input
         download_video(user_input)
-        sg.popup("You pressed the button!")
         user_start = values["user_start"]
         user_end = values["user_end"]
         create_song("downloaded/Ransom.mp4", "Ransom", user_start, user_end)
-        
 
-    if event == "user_start" and values["user_start"] == "Start":
-        sg.popup('hi')
-        window["user_start"].update(value="")
-
-    if event =="user_end" and values["user_end"] == "End":
-        window["user_end"].update(value="")
 
 window.close()
