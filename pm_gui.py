@@ -23,10 +23,13 @@ while True:
         break
     if event == "Submit":
         user_input = values["user_input"]   #Retrieves user input
-        download_video(user_input)
+        input_path = download_video(user_input)
+        print(input_path)
         user_start = values["user_start"]
         user_end = values["user_end"]
-        create_song("downloaded/Ransom.mp4", "Ransom", user_start, user_end)
+        print("Please enter a name for your song:")
+        song_name = str(input())
+        create_song(f"downloaded/{input_path}.mp4", f"{song_name}", user_start, user_end)
 
 
 window.close()
