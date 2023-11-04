@@ -2,6 +2,7 @@ from pytube import YouTube
 import shutil
 from pytube.exceptions import VideoUnavailable, VideoPrivate, RegexMatchError
 import os
+import re
 
 
 def download_video(url):
@@ -15,6 +16,8 @@ def download_video(url):
     
 
     yt = YouTube(url)
+    pattern = r'[\\/:*?"<>|]'
+    yt.title = re.sub(pattern, "", yt.title)
     path = f"downloaded/{yt.title}.mp4"
     
     if os.path.isfile(path):
