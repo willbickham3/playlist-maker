@@ -14,7 +14,7 @@ layout = [
     [sg.Button("Submit")]
 ]
 
-window = sg.Window(title="Playlist Builder", layout=layout, margins=(200, 200))
+window = sg.Window(title="Playlist Builder", layout=layout, margins=(50, 50))
 
 while True:
     event, values = window.read()
