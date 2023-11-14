@@ -27,4 +27,6 @@ This is my first project in python apart from coursework I am currently taking. 
 
 5. Submit and check the songs directory!
 
+6. For additional songs just re-enter a new start and end time.
+
 **Export functionality coming soon!**
