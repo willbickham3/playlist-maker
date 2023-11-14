@@ -42,9 +42,7 @@ while True:
         if user_confirmation == "yes":
             delete_songs()
     
-    if event == "Export":
-        
-            
+    #if event == "Export":
 
 
 window.close()
