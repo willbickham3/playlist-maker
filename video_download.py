@@ -9,20 +9,18 @@ def download_video(url):
     """Takes in a url in string form and downloads the highest quality sound from the video"""
     
     url = f"{url}"
-
+        
+            
     if "youtube.com/watch?v=" not in url:
         print("URL is not from YouTube. Please provide a YouTube URL.")
         return
     
-
+    print(url)
     yt = YouTube(url)
     pattern = r'[\\/:*?"<>|]'
     yt.title = re.sub(pattern, "", yt.title)
     path = f"downloaded/{yt.title}.mp4"
     
-    if os.path.isfile(path):
-        return yt.title
-
     try:
         if yt.streams:
             audio_files = yt.streams.filter(file_extension="mp4")
