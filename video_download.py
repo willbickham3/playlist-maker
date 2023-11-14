@@ -19,7 +19,6 @@ def download_video(url):
     yt = YouTube(url)
     pattern = r'[\\/:*?"<>|]'
     yt.title = re.sub(pattern, "", yt.title)
-    path = f"downloaded/{yt.title}.mp4"
     
     try:
         if yt.streams:
