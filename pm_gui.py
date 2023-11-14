@@ -1,8 +1,9 @@
 import PySimpleGUI as sg
-import tkinter as tk
+from delete_songs import delete_songs
 from video_download import download_video
 from song import create_song
 import os
+import shutil
 
 layout = [
     [sg.Text("Build Your Own Playlist!")],
@@ -12,7 +13,8 @@ layout = [
     [sg.InputText(key="user_start", size=(5, 1.5), enable_events=True)],
     [sg.Text("End Time")],
     [sg.InputText(key="user_end", size=(5, 1.5))],
-    [sg.Button("Submit")]
+    [sg.Button("Submit")],
+    [sg.Button("Delete Songs"), sg.Button("Export")]
 ]
 
 window = sg.Window(title="Playlist Builder", layout=layout, margins=(50, 50))
@@ -34,6 +36,15 @@ while True:
         else:
             input_path = download_video(user_input)
             create_song(f"downloaded/{input_path}.mp4", song_name, user_start, user_end)
+    
+    if event == "Delete Songs":
+        user_confirmation = sg.popup_get_text("Are you sure? Please type yes or no.")
+        if user_confirmation == "yes":
+            delete_songs()
+    
+    if event == "Export":
+        
+            
 
 
 window.close()
