@@ -1,6 +1,6 @@
 # Playlist Builder
 
-Playlist Builder is a program in progress built in python using pytube and moviepy.
+Playlist Builder is a program in progress built in python using pytube, moviepy and PySimpleGui.
 
 ## About
 
@@ -13,9 +13,12 @@ This is my first project in python apart from coursework I am currently taking. 
 2.  ```bash
     pip install pytube
     pip install moviepy
+    pip install PySimpleGui
     ```
 
 ## Running the Program
+
+**First create two directories in the root: downloaded & songs**
 
 1. Move mp4 files that you want to change into the downloaded folder. (If you have them.)
 
