@@ -1,10 +1,12 @@
-# Playlist Builder
+# Playlist Maker
 
-Playlist Builder is a program in progress built in python using pytube, moviepy and PySimpleGui.
+Playlist Maker is a program in progress built in python using pytube, moviepy and PySimpleGui.
 
 ## About
 
 This is my first project in python apart from coursework I am currently taking. I had an issue where I really wanted to be able to listen to some songs that weren't out anywhere but YouTube at the moment. So I started thinking of ways that I could accomplish that. It was fun putting this together and I'm looking forward to making it better as I have the time!
+
+Playlist Maker allows a user to download or create clips from a given YouTube URL or .mp4 file. The GUI allows for anyone of any experience to create their own playlist!
 
 ## Installation
 
