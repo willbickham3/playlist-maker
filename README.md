@@ -28,4 +28,4 @@ pip install moviepy
 
 5. Submit and check the songs directory!
 
-** Export functionality coming soon! **
+**Export functionality coming soon!**
