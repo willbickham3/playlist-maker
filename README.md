@@ -10,11 +10,10 @@ This is my first project in python apart from coursework I am currently taking. 
 
 1. Clone the repository.
 
-2. 
-```bash
-pip install pytube
-pip install moviepy
-```
+2.  ```bash
+    pip install pytube
+    pip install moviepy
+    ```
 
 ## Running the Program
 
