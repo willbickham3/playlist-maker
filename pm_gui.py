@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import tkinter as tk
 from video_download import download_video
 from song import create_song
+import os
 
 layout = [
     [sg.Text("Build Your Own Playlist!")],
@@ -23,12 +24,16 @@ while True:
         break
     if event == "Submit":
         user_input = values["user_input"]   #Retrieves user input
-        input_path = download_video(user_input)
         song_name = sg.popup_get_text('Enter a song/clip name.', title="Song Name")
         user_start = values["user_start"]
         user_end = values["user_end"]
+        path = f"downloaded/{user_input}"
 
-        create_song(f"downloaded/{input_path}.mp4", song_name, user_start, user_end)
+        if os.path.isfile(path):
+            create_song(path, song_name, user_start, user_end)
+        else:
+            input_path = download_video(user_input)
+            create_song(f"downloaded/{input_path}.mp4", song_name, user_start, user_end)
 
 
 window.close()
