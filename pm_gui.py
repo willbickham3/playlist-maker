@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from delete_songs import delete_songs
-from video_download import download_video
+from video_download import DownloadVideo
 from song import create_song
 import os
 import shutil
@@ -34,8 +34,10 @@ while True:
         if os.path.isfile(path):
             create_song(path, song_name, user_start, user_end)
         else:
-            input_path = download_video(user_input)
-            create_song(f"downloaded/{input_path}.mp4", song_name, user_start, user_end)
+            #input_path = download_video(user_input)
+            video_to_download = DownloadVideo(user_input)
+            video_to_download.download_video()
+            create_song(f"downloaded/{video_to_download.get_title()}.mp4", song_name, user_start, user_end)
     
     if event == "Delete Songs":
         user_confirmation = sg.popup_get_text("Are you sure? Please type yes or no.")
