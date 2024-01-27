@@ -26,8 +26,8 @@ class DownloadVideo:
             raise NotAYouTubeURL("URL is not from YouTube. Please provide a YouTube URL.")
         
         yt = YouTube(url)
-        pattern = r'[\\/:*?"<>|]'
-        yt.title = re.sub(pattern, "", yt.title)
+        # pattern = r'[\\/:*?"<>|]'
+        # yt.title = re.sub(pattern, "", yt.title)
         
         try:                # Try to find the highest quality audio from the video; Else it provides the 
             if yt.streams:
