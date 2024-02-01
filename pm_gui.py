@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from delete_songs import delete_songs
 from video_download import DownloadVideo
-from song import create_song, Song
+from song import Song
 import os
 import shutil
 
@@ -14,7 +14,8 @@ layout = [
     [sg.Text("End Time")],
     [sg.InputText(key="user_end", size=(5, 1.5))],
     [sg.Button("Submit")],
-    [sg.Button("Delete Songs"), sg.Button("Export")]
+    [sg.Button("Delete Songs")],
+    [sg.Button("Export"), sg.InputText(key="Export_Location", size=(30,1.5)), sg.FolderBrowse()]
 ]
 
 window = sg.Window(title="Playlist Builder", layout=layout, margins=(50, 50))
@@ -32,7 +33,8 @@ while True:
         path = f"downloaded/{user_input}"
 
         if os.path.isfile(path):
-            create_song(path, song_name, user_start, user_end)
+            new_song = Song(path, song_name, user_start, user_end)
+            new_song.create_song()
         else:
             #input_path = download_video(user_input)
             video_to_download = DownloadVideo(user_input)
@@ -45,6 +47,14 @@ while True:
         user_confirmation = sg.popup_get_text("Are you sure? Please type yes or no.")
         if user_confirmation == "yes":
             delete_songs()
+    
+    if event == "Export":
+        if values["Export_Location"]:
+            export_file_location = values["Export_Location"]
+            for files in os.listdir("songs"):
+                shutil.copy(f"songs/{files}", export_file_location)
+        else:
+            sg.popup("Please select a place for your files.")
     
     #if event == "Export":
 
