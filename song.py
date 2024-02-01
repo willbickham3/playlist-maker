@@ -15,7 +15,7 @@ class Song:
         """Returns length of song"""
         length = self._end - self._start
         if length / 60 >= 1:
-            return "longer than a minute"
+            return f"{int(length / 60)} minutes and {length % 60} seconds"
         return f"{length} seconds"
     
     def create_song(self):
@@ -29,5 +29,5 @@ class Song:
 
 
 if __name__ == "__main__":
-    new_song = Song("downloaded/Chill Monkey listening to the Deep Stone Lullaby.mp4", "monk", 0, 20)
+    new_song = Song("downloaded/Chill Monkey listening to the Deep Stone Lullaby.mp4", "monk", 0, 130)
     print(new_song.get_song_length())
