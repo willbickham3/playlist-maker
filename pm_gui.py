@@ -13,7 +13,7 @@ layout = [
     [sg.InputText(key="user_start", size=(5, 1.5), enable_events=True)],
     [sg.Text("End Time")],
     [sg.InputText(key="user_end", size=(5, 1.5))],
-    [sg.Button("Submit")],
+    [sg.Button("Create Song"), sg.Button("Create Clip")],
     [sg.Button("Delete Songs")],
     [sg.Button("Export"), sg.InputText(key="Export_Location", size=(30,1.5)), sg.FolderBrowse()]
 ]
@@ -25,7 +25,7 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
-    if event == "Submit":
+    if event == "Create Song" or event == "Create Clip":
         user_input = values["user_input"]   #Retrieves user input
         song_name = sg.popup_get_text('Enter a song/clip name.', title="Song Name")
         user_start = values["user_start"]
@@ -34,13 +34,20 @@ while True:
 
         if os.path.isfile(path):
             new_song = Song(path, song_name, user_start, user_end)
-            new_song.create_song()
-        else:
-            #input_path = download_video(user_input)
+            if event == "Create Song":
+                new_song.create_song()
+            else:
+                new_song.create_clip()
+
+        else:    
             video_to_download = DownloadVideo(user_input)
             video_to_download.download_video()
             new_song = Song(f"downloaded/{video_to_download.get_title()}.mp4", song_name, user_start, user_end)
-            new_song.create_song()
+            if event == "Create Song":
+                new_song.create_song()
+            elif event == "Create Clip":
+                new_song.create_clip()
+
             
     
     if event == "Delete Songs":
