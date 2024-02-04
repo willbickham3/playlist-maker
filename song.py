@@ -26,8 +26,17 @@ class Song:
         output_file = f"{self._song_name}.mp3"
         song.write_audiofile(output_file)
         shutil.move(output_file, "songs")
+        return
+    
+    def create_clip(self):
+        """Creates a video clip with audio"""
+        clip = VideoFileClip(f"{self._file_name}").subclip(self._start, self._end)
+        output_file = f"{self._song_name}.mp4"
+        clip.write_videofile(output_file)
+        shutil.move(output_file, "clips")
+        return
 
 
 if __name__ == "__main__":
-    new_song = Song("downloaded/Chill Monkey listening to the Deep Stone Lullaby.mp4", "monk", 0, 130)
-    print(new_song.get_song_length())
+    new_song = Song("downloaded/VØJ Narvent - Memory Reboot.mp4", "monk", 0, 60)
+    new_song.create_clip()
