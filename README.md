@@ -30,8 +30,8 @@ Playlist Maker allows a user to download or create clips from a given YouTube UR
 
 4. Enter a start and end time in seconds for your clip/song.
 
-5. Submit and check the songs directory!
+5. Submit and check the songs or clips directory!
 
-6. For additional songs just re-enter a new start and end time.
+6. For additional songs or clips just re-enter a new start and end time.
 
 **Export functionality coming soon!**
