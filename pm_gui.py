@@ -48,8 +48,6 @@ while True:
             elif event == "Create Clip":
                 new_song.create_clip()
 
-            
-    
     if event == "Delete Songs":
         user_confirmation = sg.popup_get_text("Are you sure? Please type yes or no.")
         if user_confirmation == "yes":
@@ -62,8 +60,5 @@ while True:
                 shutil.copy(f"songs/{files}", export_file_location)
         else:
             sg.popup("Please select a place for your files.")
-    
-    #if event == "Export":
-
 
 window.close()
