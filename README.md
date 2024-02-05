@@ -34,4 +34,6 @@ Playlist Maker allows a user to download or create clips from a given YouTube UR
 
 6. For additional songs or clips just re-enter a new start and end time.
 
-**Export functionality coming soon!**
+**Export functionality coming soon! (Now Live)**
+
+**Next: Gui Updates**
