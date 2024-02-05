@@ -25,7 +25,7 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
-    if event == "Create Song" or event == "Create Clip":
+    if values["user_input"] and (event == "Create Song" or event == "Create Clip"):
         user_input = values["user_input"]   #Retrieves user input
         song_name = sg.popup_get_text('Enter a song/clip name.', title="Song Name")
         user_start = values["user_start"]
